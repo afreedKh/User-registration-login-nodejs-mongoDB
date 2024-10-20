@@ -11,27 +11,27 @@
               width="200px" alt="profile">
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
+            <input type="text" class="form-control" value="<%=locals.name%>" id="name" name="name" aria-describedby="emailHelp"
               placeholder="Enter Name" >
           </div> 
           <p class="text-danger"><%= locals.invalidName ? invalidName: "" %></p>
           <div class="mb-3">
-            <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" >
+            <input type="email" name="email" value="<%=locals.email%>" class="form-control" id="email" placeholder="Enter Email" >
             <p class="text-danger"><%= locals.invalidEmail ? invalidEmail: "" %></p>
           </div>
           
           <div class="mb-3">
-            <input type="text" name="mno" class="form-control" id="mno" placeholder="Enter Mobile" >
+            <input type="text" name="mno" value="<%=locals.mno%>" class="form-control" id="mno" placeholder="Enter Mobile" >
             <p class="text-danger"><%= locals.invalidMobile ? invalidMobile: "" %></p>
           </div>
           <div class="mb-3">
-            <input type="number" name="age" class="form-control" id="age" placeholder="Enter Age" >
+            <input type="number" name="age" value="<%=locals.age%>" class="form-control" id="age" placeholder="Enter Age" >
           </div>
           <div class="mb-3">
-            <input type="text" name="place" class="form-control" id="place" placeholder="Enter Place" >
+            <input type="text" name="place" value="<%=locals.place%>" class="form-control" id="place" placeholder="Enter Place" >
           </div>
           <div class="mb-3">
-            <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" >
+            <input type="password" value="<%=locals.password%>" name="password" class="form-control" id="password" placeholder="Enter Password" >
           </div>
           <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Register</button></div>
         </form>

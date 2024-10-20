@@ -167,8 +167,17 @@ const addUser = async(req,res)=>{
         if (!validatePhone(req.body.mno)) {
             validationErrors.invalidMobile = "Invalid mobile";
         }
+        const emails = await User.findOne({email:req.body.email})
+        if(emails){
+            validationErrors.invalidEmail = "Email already exist";
+        }
 
         if (Object.keys(validationErrors).length > 0) {
+            validationErrors.email=req.body.email
+            validationErrors.name = req.body.name
+            validationErrors.mno = req.body.mno
+            validationErrors.age = req.body.age
+            validationErrors.place = req.body.place
             res.render("new-user", validationErrors);
 
         }else{

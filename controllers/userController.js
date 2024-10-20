@@ -141,10 +141,23 @@ const insertUser = async(req, res) => {
             validationErrors.invalidMobile = "Invalid mobile";
         }
 
+        const emails = await User.findOne({email:req.body.email})
+        if(emails){
+            validationErrors.invalidEmail = "Email already exist";
+        }
+
         if (Object.keys(validationErrors).length > 0) {
+            validationErrors.email=req.body.email
+            validationErrors.name = req.body.name
+            validationErrors.mno = req.body.mno
+            validationErrors.age = req.body.age
+            validationErrors.place = req.body.place
+            validationErrors.password = req.body.password
             res.render("registration", validationErrors);
         } else {
             
+            
+
             const userData = await user.save();
             if (userData) {
                 
