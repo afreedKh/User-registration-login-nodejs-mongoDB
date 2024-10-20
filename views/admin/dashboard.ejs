@@ -1,0 +1,52 @@
+<%-include("../layouts/header.ejs")%>
+
+<div class="container mt-5">
+    <header class="mb-4">
+        <h1 class="text-center">Admin Dashboard</h1>
+    </header>
+    
+    <div class="mb-4 d-flex justify-content-between">
+        <form action="/admin/search" method="post">
+        <input type="text" class="form-control w-60" id="search" placeholder="Search users..." name="searchTerm"></form>
+        <a href="/admin/new-user"><button class="btn btn-success" data-toggle="modal" data-target="#userModal">Add User</button></a>
+    </div>
+    
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Place</th>
+                <th>Mobile</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%if(users.length>0){
+                for(let i=0;i<users.length;i++){
+                    %>
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td><%=users[i].name%></td>
+                        <td><%=users[i].email%></td>
+                        <td><%=users[i].age%></td>
+                        <td><%=users[i].place%></td>
+                        <td><%=users[i].mobile%></td>
+                        <td>
+                            <a href="/admin/edit-user?id=<%=users[i]._id%>"><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#userModal">Edit</button></a>
+                            <a href="/admin/delete-user?id=<%=users[i]._id%>"><button class="btn btn-sm btn-danger">Delete</button></a>
+                        </td>
+                    </tr>
+                    <%
+                }
+            }%>
+        </tbody>
+    </table>
+    <a href="/admin/home"><button class="btn btn-sm btn-primary " data-toggle="modal" data-target="#userModal">Back to home</button></a>
+</div>
+
+
+
+<%-include("../layouts/footer.ejs")%>
